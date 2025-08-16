@@ -29,14 +29,35 @@
                 transform: translateY(0);
             }
         }
-        .contact-icon {
+        .contact-link, .contact-modal-trigger {
             cursor: pointer;
             transition: transform 0.2s ease-in-out;
+            color: #1e40af; /* Set a single color for all links */
         }
-        .contact-icon:hover {
+        .contact-link:hover, .contact-modal-trigger:hover {
             transform: scale(1.1);
         }
-        /* Style for the copy message box */
+        /* Modal and Message Box styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background-color: white;
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 400px;
+        }
         #message-box {
             position: fixed;
             top: 20px;
@@ -56,6 +77,22 @@
             opacity: 1;
             visibility: visible;
         }
+        .button-primary {
+            background-color: #1e40af;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 9999px;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .button-primary:hover {
+            background-color: #1d4ed8;
+            transform: translateY(-2px);
+        }
+        .button-primary:active {
+            transform: translateY(0);
+        }
     </style>
     <!-- Phosphor Icons for modern icon look -->
     <script src="https://unpkg.com/@phosphor-icons/web@2.0.3/dist/phosphor.js"></script>
@@ -68,23 +105,23 @@
         <!-- Header -->
         <header class="text-center mb-10 fade-in-up" style="animation-delay: 0.1s;">
             <h1 class="text-4xl lg:text-5xl font-extrabold text-gray-800 tracking-wide">Tilak Patel</h1>
-            <p class="text-gray-600 mt-2 text-md lg:text-lg flex flex-wrap justify-center items-center gap-2 lg:gap-4">
-                <span class="flex items-center gap-1">
-                    <i class="ph ph-map-pin text-blue-600"></i>
+            <p class="text-md lg:text-lg flex flex-wrap justify-center items-center gap-2 lg:gap-4 text-blue-800 font-semibold">
+                <a href="https://www.google.com/maps/place/Ahmedabad,+Gujarat/" target="_blank" class="flex items-center gap-1 contact-link">
+                    <i class="ph ph-map-pin"></i>
                     <span>Ahmedabad, India</span>
-                </span>
+                </a>
                 <span class="text-gray-400">|</span>
-                <span class="flex items-center gap-1 contact-icon" data-contact="phone">
-                    <i class="ph ph-phone text-blue-600"></i>
+                <span id="phone-modal-trigger" class="flex items-center gap-1 contact-modal-trigger">
+                    <i class="ph ph-phone"></i>
                     <span class="font-semibold">+91 73058 45243</span>
                 </span>
                 <span class="text-gray-400">|</span>
-                <span class="flex items-center gap-1 contact-icon" data-contact="email">
-                    <i class="ph ph-envelope simple text-blue-600"></i>
+                <a href="mailto:getintouch.tilak@gmail.com" class="flex items-center gap-1 contact-link">
+                    <i class="ph ph-envelope-simple"></i>
                     <span class="font-semibold">getintouch.tilak@gmail.com</span>
-                </span>
+                </a>
                 <span class="text-gray-400">|</span>
-                <a href="https://www.linkedin.com/in/iampateltilak/" target="_blank" class="flex items-center gap-1 text-blue-600 hover:text-blue-800 underline transition duration-300 ease-in-out">
+                <a href="https://www.linkedin.com/in/iampateltilak" target="_blank" class="flex items-center gap-1 contact-link underline transition duration-300 ease-in-out">
                     <i class="ph ph-linkedin-logo"></i>
                     <span class="font-semibold">LinkedIn Profile</span>
                 </a>
@@ -122,10 +159,10 @@
                 </div>
                 <p class="text-gray-600 text-md">Zapplon Internet Pvt. Ltd. | San Jose, California (Remote)</p>
                 <ul class="list-disc list-inside mt-2 text-gray-600 space-y-1">
-                    <li class="hover:text-gray-800 transition duration-200">Conducted in-depth market research and competitor analysis to identify new business opportunities.</li>
-                    <li class="hover:text-gray-800 transition duration-200">Researched and recommended AI-powered tools and innovative business ideas to optimize workflows.</li>
-                    <li class="hover:text-gray-800 transition duration-200">Supported B2B sales and business development, pitching to US executives and assisting in securing proposals.</li>
-                    <li class="hover:text-gray-800 transition duration-200">Provided strategic inputs to improve marketing outreach and platform visibility.</li>
+                        <li class="hover:text-gray-800 transition duration-200">Conducted in-depth market research and competitor analysis to identify new business opportunities.</li>
+                        <li class="hover:text-gray-800 transition duration-200">Researched and recommended AI-powered tools and innovative business ideas to optimize workflows.</li>
+                        <li class="hover:text-gray-800 transition duration-200">Supported B2B sales and business development, pitching to US executives and assisting in securing proposals.</li>
+                        <li class="hover:text-gray-800 transition duration-200">Provided strategic inputs to improve marketing outreach and platform visibility.</li>
                 </ul>
             </div>
         </section>
@@ -154,16 +191,42 @@
                 </div>
             </div>
         </section>
+
+    </div>
+
+    <!-- Modals -->
+    
+    <!-- Phone Modal -->
+    <div id="phone-modal" class="modal-overlay">
+        <div class="modal-content text-center">
+            <h3 class="text-2xl font-bold mb-4">Contact Tilak</h3>
+            <p class="text-gray-600 mb-6">Choose how you'd like to reach out:</p>
+            <div class="space-y-4">
+                <button id="whatsapp-btn" class="w-full button-primary flex items-center justify-center space-x-2">
+                    <i class="ph ph-whatsapp-logo"></i>
+                    <span>Message on WhatsApp</span>
+                </button>
+                <button id="copy-phone-btn" class="w-full button-primary flex items-center justify-center space-x-2">
+                    <i class="ph ph-copy"></i>
+                    <span>Copy Number</span>
+                </button>
+                <button class="w-full text-gray-600 hover:text-gray-800 close-modal-btn">Cancel</button>
+            </div>
+        </div>
     </div>
 
     <!-- Message Box -->
     <div id="message-box" class="hidden"></div>
 
     <script>
-        // JavaScript for copy to clipboard and message display
-        const contactElements = document.querySelectorAll('[data-contact]');
+        // JavaScript for phone and message functionality
         const messageBox = document.getElementById('message-box');
-        const resumeContainer = document.getElementById('resume-container');
+        const phoneModalTrigger = document.getElementById('phone-modal-trigger');
+        const phoneModal = document.getElementById('phone-modal');
+        const whatsappBtn = document.getElementById('whatsapp-btn');
+        const copyPhoneBtn = document.getElementById('copy-phone-btn');
+        const phoneCloseBtns = phoneModal.querySelectorAll('.close-modal-btn');
+        const phoneNumber = "+917305845243"; // Phone number without any spaces or special characters
 
         // Function to show a temporary message
         function showMessage(text, isError = false) {
@@ -175,32 +238,39 @@
             }, 3000);
         }
 
-        // Copy functionality for phone and email
-        contactElements.forEach(element => {
-            element.addEventListener('click', () => {
-                let textToCopy;
-                const contactType = element.getAttribute('data-contact');
+        // Show the phone modal when the number is clicked
+        phoneModalTrigger.addEventListener('click', () => {
+            phoneModal.style.display = 'flex';
+        });
 
-                if (contactType === 'phone') {
-                    textToCopy = element.querySelector('span').textContent;
-                } else if (contactType === 'email') {
-                    textToCopy = element.querySelector('span').textContent;
-                }
+        // Handle WhatsApp button click
+        whatsappBtn.addEventListener('click', () => {
+            window.open(`https://wa.me/${phoneNumber}`, '_blank');
+            phoneModal.style.display = 'none';
+        });
 
-                // Use document.execCommand for better compatibility in iframes
-                const el = document.createElement('textarea');
-                el.value = textToCopy.trim();
-                document.body.appendChild(el);
-                el.select();
-                try {
-                    document.execCommand('copy');
-                    showMessage(contactType === 'phone' ? 'Phone number copied!' : 'Email copied!');
-                } catch (err) {
-                    console.error('Failed to copy text: ', err);
-                    showMessage('Copy failed. Please copy manually.', true);
-                } finally {
-                    document.body.removeChild(el);
-                }
+        // Handle copy number button click
+        copyPhoneBtn.addEventListener('click', () => {
+            const el = document.createElement('textarea');
+            el.value = phoneNumber;
+            document.body.appendChild(el);
+            el.select();
+            try {
+                document.execCommand('copy');
+                showMessage('Phone number copied!');
+            } catch (err) {
+                console.error('Failed to copy text: ', err);
+                showMessage('Copy failed. Please copy manually.', true);
+            } finally {
+                document.body.removeChild(el);
+            }
+            phoneModal.style.display = 'none';
+        });
+
+        // Handle closing the phone modal
+        phoneCloseBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                phoneModal.style.display = 'none';
             });
         });
 
