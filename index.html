@@ -15,8 +15,10 @@
             height: 1px;
             background-color: #e5e7eb;
         }
+        /* Adjusted container for better mobile responsiveness */
         .container {
             max-width: 800px;
+            width: 100%;
         }
         .fade-in-up {
             animation: fadeInUp 0.8s ease-out forwards;
@@ -106,21 +108,26 @@
         <header class="text-center mb-10 fade-in-up" style="animation-delay: 0.1s;">
             <h1 class="text-4xl lg:text-5xl font-extrabold text-gray-800 tracking-wide">Tilak Patel</h1>
             <p class="text-md lg:text-lg flex flex-wrap justify-center items-center gap-2 lg:gap-4 text-blue-800 font-semibold">
+                <!-- Location link for mobile and desktop -->
                 <a href="https://www.google.com/maps/place/Ahmedabad,+Gujarat/" target="_blank" class="flex items-center gap-1 contact-link">
                     <i class="ph ph-map-pin"></i>
                     <span>Ahmedabad, India</span>
                 </a>
-                <span class="text-gray-400">|</span>
+                <!-- Separator for desktop view -->
+                <span class="text-gray-400 hidden sm:inline">|</span>
+                <!-- Phone number trigger for modal -->
                 <span id="phone-modal-trigger" class="flex items-center gap-1 contact-modal-trigger">
                     <i class="ph ph-phone"></i>
                     <span class="font-semibold">+91 73058 45243</span>
                 </span>
-                <span class="text-gray-400">|</span>
+                <span class="text-gray-400 hidden sm:inline">|</span>
+                <!-- Email link -->
                 <a href="mailto:getintouch.tilak@gmail.com" class="flex items-center gap-1 contact-link">
                     <i class="ph ph-envelope-simple"></i>
                     <span class="font-semibold">getintouch.tilak@gmail.com</span>
                 </a>
-                <span class="text-gray-400">|</span>
+                <span class="text-gray-400 hidden sm:inline">|</span>
+                <!-- LinkedIn profile link -->
                 <a href="https://www.linkedin.com/in/iampateltilak" target="_blank" class="flex items-center gap-1 contact-link underline transition duration-300 ease-in-out">
                     <i class="ph ph-linkedin-logo"></i>
                     <span class="font-semibold">LinkedIn Profile</span>
@@ -133,16 +140,16 @@
             <h2 class="text-3xl font-bold text-gray-700 mb-4 border-l-4 border-blue-600 pl-4">Education</h2>
             <div class="section-divider mb-4"></div>
             <div class="mb-4 bg-gray-50 p-4 rounded-lg hover:bg-gray-100 transition duration-300 ease-in-out">
-                <div class="flex justify-between items-start">
+                <div class="flex justify-between items-start flex-col sm:flex-row">
                     <h3 class="font-semibold text-gray-800 text-lg">Ahmedabad University, Ahmedabad</h3>
-                    <p class="text-gray-500 text-sm">2025-2029</p>
+                    <p class="text-gray-500 text-sm mt-1 sm:mt-0">2025-2029</p>
                 </div>
                 <p class="text-gray-600 text-md">Bachelor of Science in Management (Finance)</p>
             </div>
             <div class="bg-gray-50 p-4 rounded-lg hover:bg-gray-100 transition duration-300 ease-in-out">
-                <div class="flex justify-between items-start">
+                <div class="flex justify-between items-start flex-col sm:flex-row">
                     <h3 class="font-semibold text-gray-800 text-lg">D.A.V. School, Pallikaranai, Chennai</h3>
-                    <p class="text-gray-500 text-sm">2023-2025</p>
+                    <p class="text-gray-500 text-sm mt-1 sm:mt-0">2023-2025</p>
                 </div>
                 <p class="text-gray-600 text-md">Grade 12 - Commerce</p>
             </div>
@@ -153,9 +160,9 @@
             <h2 class="text-3xl font-bold text-gray-700 mb-4 border-l-4 border-blue-600 pl-4">Experience</h2>
             <div class="section-divider mb-4"></div>
             <div class="mb-4 bg-gray-50 p-4 rounded-lg hover:bg-gray-100 transition duration-300 ease-in-out">
-                <div class="flex justify-between items-start">
+                <div class="flex justify-between items-start flex-col sm:flex-row">
                     <h3 class="font-semibold text-gray-800 text-lg">Founder's Associate Intern</h3>
-                    <p class="text-gray-500 text-sm">July - August 2025</p>
+                    <p class="text-gray-500 text-sm mt-1 sm:mt-0">July - August 2025</p>
                 </div>
                 <p class="text-gray-600 text-md">Zapplon Internet Pvt. Ltd. | San Jose, California (Remote)</p>
                 <ul class="list-disc list-inside mt-2 text-gray-600 space-y-1">
