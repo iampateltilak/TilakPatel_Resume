@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tilak Patel | Resume</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f6f8fb;
+        }
+        .section-divider {
+            height: 1px;
+            background-color: #e5e7eb;
+        }
+        .container {
+            max-width: 800px;
+        }
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .contact-icon {
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out;
+        }
+        .contact-icon:hover {
+            transform: scale(1.1);
+        }
+        /* Style for the copy message box */
+        #message-box {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #10b981;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 1000;
+        }
+        #message-box.show {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+    <!-- Phosphor Icons for modern icon look -->
+    <script src="https://unpkg.com/@phosphor-icons/web@2.0.3/dist/phosphor.js"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
+
+    <!-- Main Resume Container -->
+    <div id="resume-container" class="container bg-white shadow-2xl rounded-2xl p-8 lg:p-12 border border-gray-200">
+
+        <!-- Header -->
+        <header class="text-center mb-10 fade-in-up" style="animation-delay: 0.1s;">
+            <h1 class="text-4xl lg:text-5xl font-extrabold text-gray-800 tracking-wide">Tilak Patel</h1>
+            <p class="text-gray-600 mt-2 text-md lg:text-lg flex flex-wrap justify-center items-center gap-2 lg:gap-4">
+                <span class="flex items-center gap-1">
+                    <i class="ph ph-map-pin text-blue-600"></i>
+                    <span>Ahmedabad, India</span>
+                </span>
+                <span class="text-gray-400">|</span>
+                <span class="flex items-center gap-1 contact-icon" data-contact="phone">
+                    <i class="ph ph-phone text-blue-600"></i>
+                    <span class="font-semibold">+91 73058 45243</span>
+                </span>
+                <span class="text-gray-400">|</span>
+                <span class="flex items-center gap-1 contact-icon" data-contact="email">
+                    <i class="ph ph-envelope simple text-blue-600"></i>
+                    <span class="font-semibold">tilak28556@gmail.com</span>
+                </span>
+                <span class="text-gray-400">|</span>
+                <a href="https://www.linkedin.com/in/iampateltilak/" target="_blank" class="flex items-center gap-1 text-blue-600 hover:text-blue-800 underline transition duration-300 ease-in-out">
+                    <i class="ph ph-linkedin-logo"></i>
+                    <span class="font-semibold">LinkedIn Profile</span>
+                </a>
+            </p>
+        </header>
+
+        <!-- Education Section -->
+        <section class="mb-10 fade-in-up" style="animation-delay: 0.2s;">
+            <h2 class="text-3xl font-bold text-gray-700 mb-4 border-l-4 border-blue-600 pl-4">Education</h2>
+            <div class="section-divider mb-4"></div>
+            <div class="mb-4 bg-gray-50 p-4 rounded-lg hover:bg-gray-100 transition duration-300 ease-in-out">
+                <div class="flex justify-between items-start">
+                    <h3 class="font-semibold text-gray-800 text-lg">Ahmedabad University, Ahmedabad</h3>
+                    <p class="text-gray-500 text-sm">2025-2029</p>
+                </div>
+                <p class="text-gray-600 text-md">Bachelor of Science in Management (Finance)</p>
+            </div>
+            <div class="bg-gray-50 p-4 rounded-lg hover:bg-gray-100 transition duration-300 ease-in-out">
+                <div class="flex justify-between items-start">
+                    <h3 class="font-semibold text-gray-800 text-lg">D.A.V. School, Pallikaranai, Chennai</h3>
+                    <p class="text-gray-500 text-sm">2023-2025</p>
+                </div>
+                <p class="text-gray-600 text-md">Grade 12 - Commerce</p>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section class="mb-10 fade-in-up" style="animation-delay: 0.3s;">
+            <h2 class="text-3xl font-bold text-gray-700 mb-4 border-l-4 border-blue-600 pl-4">Experience</h2>
+            <div class="section-divider mb-4"></div>
+            <div class="mb-4 bg-gray-50 p-4 rounded-lg hover:bg-gray-100 transition duration-300 ease-in-out">
+                <div class="flex justify-between items-start">
+                    <h3 class="font-semibold text-gray-800 text-lg">Founder's Associate Intern</h3>
+                    <p class="text-gray-500 text-sm">July - August 2025</p>
+                </div>
+                <p class="text-gray-600 text-md">Zapplon Internet Pvt. Ltd. | San Jose, California (Remote)</p>
+                <ul class="list-disc list-inside mt-2 text-gray-600 space-y-1">
+                    <li class="hover:text-gray-800 transition duration-200">Conducted in-depth market research and competitor analysis to identify new business opportunities.</li>
+                    <li class="hover:text-gray-800 transition duration-200">Researched and recommended AI-powered tools and innovative business ideas to optimize workflows.</li>
+                    <li class="hover:text-gray-800 transition duration-200">Supported B2B sales and business development, pitching to US executives and assisting in securing proposals.</li>
+                    <li class="hover:text-gray-800 transition duration-200">Provided strategic inputs to improve marketing outreach and platform visibility.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="fade-in-up" style="animation-delay: 0.4s;">
+            <h2 class="text-3xl font-bold text-gray-700 mb-4 border-l-4 border-blue-600 pl-4">Skills</h2>
+            <div class="section-divider mb-4"></div>
+            <div class="space-y-4">
+                <div class="bg-gray-50 p-4 rounded-lg hover:bg-gray-100 transition duration-300 ease-in-out">
+                    <h3 class="font-semibold text-gray-800 text-lg">Languages</h3>
+                    <p class="text-gray-600">Fluent in English and multiple regional languages.</p>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg hover:bg-gray-100 transition duration-300 ease-in-out">
+                    <h3 class="font-semibold text-gray-800 text-lg">Technical Skills</h3>
+                    <p class="text-gray-600">Microsoft Office Suite (Excel, PowerPoint, Word).</p>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg hover:bg-gray-100 transition duration-300 ease-in-out">
+                    <h3 class="font-semibold text-gray-800 text-lg">Core Competencies</h3>
+                    <ul class="list-disc list-inside text-gray-600 mt-1 space-y-1">
+                        <li class="hover:text-gray-800 transition duration-200">Data-driven decision making</li>
+                        <li class="hover:text-gray-800 transition duration-200">Market research & competitor analysis</li>
+                        <li class="hover:text-gray-800 transition duration-200">Strategic planning & execution</li>
+                        <li class="hover:text-gray-800 transition duration-200">Client engagement & communication</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Message Box -->
+    <div id="message-box" class="hidden"></div>
+
+    <script>
+        // JavaScript for copy to clipboard and message display
+        const contactElements = document.querySelectorAll('[data-contact]');
+        const messageBox = document.getElementById('message-box');
+        const resumeContainer = document.getElementById('resume-container');
+
+        // Function to show a temporary message
+        function showMessage(text, isError = false) {
+            messageBox.textContent = text;
+            messageBox.style.backgroundColor = isError ? '#dc2626' : '#10b981';
+            messageBox.classList.add('show');
+            setTimeout(() => {
+                messageBox.classList.remove('show');
+            }, 3000);
+        }
+
+        // Copy functionality for phone and email
+        contactElements.forEach(element => {
+            element.addEventListener('click', () => {
+                let textToCopy;
+                const contactType = element.getAttribute('data-contact');
+
+                if (contactType === 'phone') {
+                    textToCopy = element.querySelector('span').textContent;
+                } else if (contactType === 'email') {
+                    textToCopy = element.querySelector('span').textContent;
+                }
+
+                // Use document.execCommand for better compatibility in iframes
+                const el = document.createElement('textarea');
+                el.value = textToCopy.trim();
+                document.body.appendChild(el);
+                el.select();
+                try {
+                    document.execCommand('copy');
+                    showMessage(contactType === 'phone' ? 'Phone number copied!' : 'Email copied!');
+                } catch (err) {
+                    console.error('Failed to copy text: ', err);
+                    showMessage('Copy failed. Please copy manually.', true);
+                } finally {
+                    document.body.removeChild(el);
+                }
+            });
+        });
+
+        // Add a class to body once content is loaded to trigger animations
+        document.body.classList.add('loaded');
+    </script>
+</body>
+</html>
